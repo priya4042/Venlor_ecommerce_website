@@ -1,0 +1,39 @@
+/* src/components/OffersDiscounts.css */
+
+.offers-discounts {
+  margin-top: 35px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  border: 1px solid #444;
+  color: #fff;
+}
+
+.offers-discounts h3 {
+  color: #ffce00;
+  margin-bottom: 15px;
+}
+
+.offers-discounts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.offers-discounts li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  padding: 8px 0;
+  border-bottom: 1px dashed #555;
+}
+
+.offers-discounts li:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  color: #ffce00;
+  font-size: 1.1rem;
+}

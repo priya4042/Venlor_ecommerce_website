@@ -1,0 +1,13 @@
+/* src/components/BlobImage.css */
+.blob-container {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+}
+
+.blob-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

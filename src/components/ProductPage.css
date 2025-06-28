@@ -1,0 +1,398 @@
+<<<<<<< HEAD
+/* src/components/ProductPage.css */
+=======
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+.product-title,
+.product-price,
+.choose-button {
+  font-family: 'Libre Baskerville', serif;
+}
+
+>>>>>>> a7b10ae (Updated files and added new changes)
+
+.product-page {
+  position: relative;
+  z-index: 1;
+<<<<<<< HEAD
+  background: #000;
+=======
+  background: #ffffff;
+>>>>>>> a7b10ae (Updated files and added new changes)
+  color: white;
+}
+
+/* Fixed Background Banner */
+.background-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.background-banner::before {
+  content: "";
+<<<<<<< HEAD
+  background-image: url('https://iwestreet.com/cdn/shop/files/IMG_8862.jpg?v=1727287089&width=2000');
+=======
+  background-image: url('/public/Shirts/BannerImage.jpg'); /* ✅ Correct way to use public image in CSS */
+>>>>>>> a7b10ae (Updated files and added new changes)
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> a7b10ae (Updated files and added new changes)
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem;
+  z-index: 2;
+  position: relative;
+}
+
+/* Product Card */
+.product-card {
+<<<<<<< HEAD
+  background: #111;
+  border-radius: 20px;
+  padding: 20px;
+=======
+  background: #F2F2F2;
+  border-radius: 20px;
+>>>>>>> a7b10ae (Updated files and added new changes)
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(255, 0, 0, 0.15);
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+<<<<<<< HEAD
+=======
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+>>>>>>> a7b10ae (Updated files and added new changes)
+}
+
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(255, 0, 0, 0.3);
+}
+
+/* Image */
+.image-wrapper {
+  position: relative;
+<<<<<<< HEAD
+  margin-bottom: 15px;
+=======
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+>>>>>>> a7b10ae (Updated files and added new changes)
+}
+
+.image-wrapper img {
+  width: 100%;
+<<<<<<< HEAD
+  height: 230px;
+  object-fit: contain;
+  background: white;
+  border-radius: 10px;
+=======
+  height: 100%;
+  object-fit: cover;
+  display: block;
+>>>>>>> a7b10ae (Updated files and added new changes)
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+<<<<<<< HEAD
+  background: #dc2626;
+  color: white;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Info */
+.product-info h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.price {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.current {
+  color: #fcd34d;
+=======
+  background: #df1616;
+  color: white;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Quick View Overlay */
+.quick-view-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .quick-view-overlay {
+  background: rgba(223, 22, 22, 0.95);
+  color: white;
+}
+
+/* Info */
+.product-infoData {
+  padding: 15px;
+}
+
+.brand-name {
+  color: #cc8700;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.product-infoData h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #000000;
+}
+
+/* Rating */
+.rating-box {
+    display: inline;
+    font-size: 13px;
+    margin-bottom: 8px;
+    background: #22c55e;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-left: 63px;
+    margin-right: 58px;
+}
+
+.rating-count {
+  color: #1e1e1e;
+  background: #e2e8f0;
+  margin-left: 6px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Price */
+.price {
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.current {
+  color: #df1616;
+>>>>>>> a7b10ae (Updated files and added new changes)
+  font-weight: bold;
+}
+
+.original {
+<<<<<<< HEAD
+  color: #e5e7eb;
+=======
+  color: #747983;
+>>>>>>> a7b10ae (Updated files and added new changes)
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+
+<<<<<<< HEAD
+=======
+.discount {
+  color: #df1616;
+  font-weight: bold;
+  font-size: 13px;
+  margin-left: 6px;
+}
+
+/* Offer Price */
+.offer-price {
+  color: #047857;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+>>>>>>> a7b10ae (Updated files and added new changes)
+/* Button */
+.view-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #df1616;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 14px;
+<<<<<<< HEAD
+  transition: background 0.3s ease;
+}
+
+.view-btn:hover {
+  background: #0f172a;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* Tablet */
+=======
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.view-btn:hover {
+  background: linear-gradient(to right, #df1616, #000000);
+  color: white;
+  border: 2px solid transparent;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive */
+>>>>>>> a7b10ae (Updated files and added new changes)
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    padding: 3rem 1rem;
+  }
+
+<<<<<<< HEAD
+  .image-wrapper img {
+    height: 200px;
+  }
+
+  .product-info h3 {
+=======
+  .image-wrapper {
+    height: 220px;
+  }
+
+  .product-infoData h3 {
+>>>>>>> a7b10ae (Updated files and added new changes)
+    font-size: 15px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .view-btn {
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+}
+
+<<<<<<< HEAD
+/* Mobile */
+=======
+>>>>>>> a7b10ae (Updated files and added new changes)
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 2rem 1rem;
+  }
+
+<<<<<<< HEAD
+  .image-wrapper img {
+    height: 170px;
+  }
+
+  .product-info h3 {
+=======
+  .image-wrapper {
+    height: 180px;
+  }
+
+  .product-infoData h3 {
+>>>>>>> a7b10ae (Updated files and added new changes)
+    font-size: 14px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .view-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+<<<<<<< HEAD
+/* Very Small Screens */
+=======
+>>>>>>> a7b10ae (Updated files and added new changes)
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+<<<<<<< HEAD
+  .image-wrapper img {
+=======
+  .image-wrapper {
+>>>>>>> a7b10ae (Updated files and added new changes)
+    height: 160px;
+  }
+
+  .product-card {
+<<<<<<< HEAD
+    padding: 15px;
+=======
+    padding: 0;
+  }
+
+  .product-infoData {
+    padding: 12px;
+>>>>>>> a7b10ae (Updated files and added new changes)
+  }
+
+  .view-btn {
+    width: 100%;
+    text-align: center;
+    padding: 8px 0;
+  }
+}

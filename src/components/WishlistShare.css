@@ -1,0 +1,53 @@
+/* src/components/WishlistShare.css */
+
+.wishlist-share {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.wishlist-btn {
+  background: transparent;
+  border: 1px solid #ffce00;
+  color: #ffce00;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.wishlist-btn:hover {
+  background: #ffce00;
+  color: #000;
+}
+
+.share-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.share-icon {
+  font-size: 1.2rem;
+  color: #fff;
+  padding: 6px;
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.share-icon.whatsapp:hover {
+  background-color: #25d366;
+}
+
+.share-icon.instagram:hover {
+  background-color: #e1306c;
+}

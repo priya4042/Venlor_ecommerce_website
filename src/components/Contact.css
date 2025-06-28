@@ -1,0 +1,120 @@
+/* src/components/Contact.css */
+.contact-page {
+    background-color: #121212;
+    color: #fff;
+    padding: 80px 20px;
+    min-height: 100vh;
+    animation: fadeInPage 1.2s ease-in;
+  }
+  
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .contact-info {
+    flex: 1;
+    animation: slideInLeft 1s ease-out;
+  }
+  
+  .contact-title {
+    font-size: 3rem;
+    color: #e60000;
+    margin-bottom: 20px;
+  }
+  
+  .contact-subtext {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .contact-details {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+    color: #ddd;
+  }
+  
+  .contact-details li {
+    margin-bottom: 10px;
+  }
+  
+  .contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: slideInRight 1s ease-out;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1f1f1f;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 8px #e60000;
+  }
+  
+  .contact-form button {
+    padding: 12px 20px;
+    background-color: #e60000;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-form button:hover {
+    transform: scale(1.05);
+    background-color: #ff1a1a;
+  }
+  
+  /* Animations */
+  @keyframes fadeInPage {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideInLeft {
+    0% { transform: translateX(-100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes slideInRight {
+    0% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contact-container {
+      flex-direction: column;
+    }
+  
+    .contact-title {
+      font-size: 2.5rem;
+    }
+  
+    .contact-subtext,
+    .contact-details {
+      font-size: 1rem;
+    }
+  }
+  
