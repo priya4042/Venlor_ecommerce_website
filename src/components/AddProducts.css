@@ -122,11 +122,8 @@
   }
   
   .modal-body input, .modal-body textarea {
-<<<<<<< HEAD
     color: #fff;
-=======
     color: #000000;
->>>>>>> a7b10ae (Updated files and added new changes)
     border-radius: 8px;
     padding: 12px;
     width: 100%;
@@ -174,9 +171,6 @@
     display: block;
   }
   
-<<<<<<< HEAD
-  
-=======
   .velnor-loader-overlay {
   position: fixed;
   top: 0;
@@ -418,4 +412,3 @@ select {
   width: 100%;
   margin-bottom: 1rem;
 }
->>>>>>> a7b10ae (Updated files and added new changes)

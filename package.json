@@ -4,11 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-=======
     "@ckeditor/ckeditor5-build-classic": "^41.4.2",
     "@ckeditor/ckeditor5-react": "^9.5.0",
->>>>>>> a7b10ae (Updated files and added new changes)
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
@@ -17,9 +14,6 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
-    "bootstrap": "^5.3.5",
-=======
     "@tiptap/extension-dropcursor": "^2.23.0",
     "@tiptap/extension-hard-break": "^2.23.0",
     "@tiptap/extension-horizontal-rule": "^2.23.0",
@@ -33,7 +27,6 @@
     "firebase": "^11.9.1",
     "framer-motion": "^12.19.1",
     "heic2any": "^0.0.4",
->>>>>>> a7b10ae (Updated files and added new changes)
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.1.0",
@@ -42,10 +35,7 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
-<<<<<<< HEAD
-=======
     "swiper": "^11.2.8",
->>>>>>> a7b10ae (Updated files and added new changes)
     "web-vitals": "^2.1.4"
   },
   "scripts": {
