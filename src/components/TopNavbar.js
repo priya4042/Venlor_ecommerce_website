@@ -1,74 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useCart } from './context/CartContext'; // ✅ Cart Context
+// src/components/TopNavbar.jsx
+
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
+import { useCart } from './context/CartContext';
 import './TopNavbar.css';
 
 function TopNavbar() {
-  const [isSignedIn, setIsSignedIn] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const { cartItems } = useCart(); // ✅ Access cart items
+  const { user, logout } = useAuth();
+  const { cartItems } = useCart();
+  const navigate = useNavigate();
 
-  const toggleSignIn = () => setIsSignedIn(!isSignedIn);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const handleLogout = async () => {
+    await logout();
+    navigate('/signin');
+  };
 
   return (
-    <nav className={`navbar navbar-expand-lg custom-navbar shadow-lg ${isMobile ? 'navbar-mobile' : ''}`}>
+    <nav className="navbar navbar-expand-lg custom-navbar">
       <div className="container-fluid">
-        {/* ✅ Logo */}
-        <Link className="navbar-brand logo" to="/">
-          <img 
-            src={`${process.env.PUBLIC_URL}/Shirts/velnor-new-logo.jpg`} 
-            alt="Velnor Logo" 
-            className="nav-logo-img"
-          />
-        </Link>
-
-        {/* ✅ Hamburger for mobile */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span className="navbar-toggler-icon">
-            <i className="fas fa-bars"></i>
-          </span>
-        </button>
-
-        {/* ✅ Navigation links */}
-        <div className="collapse navbar-collapse" id="navbarNav">
+      <Link className="navbar-brand logo" to="/">
+            <img
+              src={`${process.env.PUBLIC_URL}/Shirts/velnor-new-logo.jpg`}
+              alt="Velnor Logo"
+              className="nav-logo-img"
+            />
+          </Link>
+        <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item"><Link className="nav-link" to="/products">Products</Link></li>
-            <li className="nav-item"><Link className="nav-link" to="/add-products">Add Products</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
+            <li className="nav-item"><Link className="nav-link" to="/add-products">Add Products</Link></li>
 
-            {!isSignedIn ? (
+            {user ? (
               <>
-                <li className="nav-item"><Link className="nav-link" to="/signin">Sign In</Link></li>
-                <li className="nav-item">
-                  <button className="btn btn-link nav-link" onClick={toggleSignIn}>Simulate Sign In</button>
-                </li>
+                <li className="nav-item"><span className="nav-link">👋 {user.username}</span></li>
+                <li className="nav-item"><button className="btn nav-link" onClick={handleLogout}>Logout</button></li>
               </>
             ) : (
-              <li className="nav-item">
-                <button className="btn btn-link nav-link" onClick={toggleSignIn}>Sign Out</button>
-              </li>
+              <li className="nav-item"><Link className="nav-link" to="/signin">Sign In</Link></li>
             )}
 
-            {/* ✅ Cart icon with dynamic count */}
             <li className="nav-item cart-icon">
               <Link className="nav-link" to="/checkout">
-                <i className="fas fa-shopping-cart"></i>
-                {cartItems.length > 0 && (
-                  <span className="cart-count">{cartItems.length}</span>
-                )}
+                🛒 {cartItems.length > 0 && <span className="cart-count">{cartItems.length}</span>}
               </Link>
             </li>
           </ul>

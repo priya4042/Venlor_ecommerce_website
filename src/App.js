@@ -1,45 +1,85 @@
+// src/App.js
+
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
+import { AuthProvider, useAuth } from './components/context/AuthContext';
+import { CartProvider } from './components/context/CartContext';
+
+import TopNavbar from './components/TopNavbar';
+import Footer from './components/Footer';
 
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
-import TopNavbar from './components/TopNavbar';
 import ForgotPassword from './components/ForgotPassword';
 import ProductPage from './components/ProductPage';
 import ProductDetailPage from './components/ProductDetailPage';
-import Footer from './components/Footer';
 import About from './components/About';
 import Contact from './components/Contact';
 import AddProducts from './components/AddProducts';
-import CheckoutPage from './components/CheckoutPage'; // ✅ Added cart checkout route
+import CheckoutPage from './components/CheckoutPage';
+import PaymentPage from './components/PaymentPage';
+import OrderSuccess from './components/OrderSuccess';
 
-import { CartProvider } from './components/context/CartContext'; // ✅ Cart context provider
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+import { Spinner } from 'react-bootstrap'; // Optional: loading animation
+
+// ✅ Show loading screen while auth is initializing
+const AppContent = () => {
+  const { loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="loading-screen" style={{ textAlign: 'center', padding: '5rem', color: 'white' }}>
+        <Spinner animation="border" variant="light" />
+        <p>Checking authentication...</p>
+      </div>
+    );
+  }
+
   return (
     <CartProvider>
-      <Router basename="/ecommerce-website">
+      <BrowserRouter>
         <TopNavbar />
         <div className="containers">
           <Routes>
-            <Route path="/" element={<ProductPage />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/" element={<Navigate to="/products" />} />
+
+            {/* ✅ Public Routes */}
+            <Route path="/signin" element={<PublicRoute><SignIn /></PublicRoute>} />
+            <Route path="/signup" element={<PublicRoute><SignUp /></PublicRoute>} />
+            <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
+
+            {/* ✅ Public Pages */}
             <Route path="/products" element={<ProductPage />} />
-            <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/add-products" element={<AddProducts />} />
-            <Route path="/checkout" element={<CheckoutPage />} /> {/* ✅ Added checkout */}
+
+            {/* ✅ Protected Routes */}
+            <Route path="/product/:id" element={<PrivateRoute><ProductDetailPage /></PrivateRoute>} />
+            <Route path="/contact" element={<PrivateRoute><Contact /></PrivateRoute>} />
+            <Route path="/add-products" element={<PrivateRoute><AddProducts /></PrivateRoute>} />
+            <Route path="/checkout" element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
+            <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/order-success" element={<OrderSuccess />} />
           </Routes>
         </div>
         <Footer />
-      </Router>
+      </BrowserRouter>
     </CartProvider>
+  );
+};
+
+// ✅ Wrap app in AuthProvider first
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 

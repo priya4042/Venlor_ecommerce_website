@@ -4,7 +4,6 @@ import { db } from '../firebaseConfig';
 import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 import TiptapEditor from './TiptapEditor';
 import heic2any from 'heic2any';
-
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -14,19 +13,23 @@ export default function AddProductForm({ existing, onDone, onCancel }) {
         ...existing,
         media: Array.isArray(existing.media) ? existing.media : [existing.media],
         mediaFiles: [],
+        colors: existing.colors || [],
       }
     : {
         title: '', description: '', status: 'Active', media: [], mediaFiles: [],
         category: '', type: '', vendor: '', collections: '', tags: '',
         price: '', compareAtPrice: '', cost: '', chargeTax: true,
         trackQuantity: true, quantity: '', continueSelling: false, sku: '',
-        isPhysical: true, weight: '', seoTitle: '', seoDescription: ''
+        isPhysical: true, weight: '', seoTitle: '', seoDescription: '',
+        colors: [],
       };
 
   const [form, setForm] = useState(initial);
   const [loading, setLoading] = useState(false);
   const [uploadingImages, setUploadingImages] = useState(false);
   const [previewUrls, setPreviewUrls] = useState([]);
+  const [newColor, setNewColor] = useState('');
+  const [showColorModal, setShowColorModal] = useState(false);
 
   useEffect(() => {
     if (existing) {
@@ -40,20 +43,14 @@ export default function AddProductForm({ existing, onDone, onCancel }) {
   useEffect(() => {
     const urls = form.mediaFiles.map(file => URL.createObjectURL(file));
     setPreviewUrls(urls);
-
-    return () => {
-      urls.forEach(url => URL.revokeObjectURL(url));
-    };
+    return () => urls.forEach(url => URL.revokeObjectURL(url));
   }, [form.mediaFiles]);
 
   const handleChange = async (e) => {
     const { name, type, value, checked, files } = e.target;
     if (type === 'file') {
       const fileArray = await convertFilesToJPG(Array.from(files));
-      setForm(f => ({
-        ...f,
-        mediaFiles: [...f.mediaFiles, ...fileArray],
-      }));
+      setForm(f => ({ ...f, mediaFiles: [...f.mediaFiles, ...fileArray] }));
     } else if (type === 'checkbox') {
       setForm(f => ({ ...f, [name]: checked }));
     } else {
@@ -85,7 +82,6 @@ export default function AddProductForm({ existing, onDone, onCancel }) {
         return null;
       }
     }));
-
     return convertedFiles.filter(Boolean);
   };
 
@@ -102,6 +98,15 @@ export default function AddProductForm({ existing, onDone, onCancel }) {
 
     const d = await res.json();
     return d.secure_url;
+  };
+
+  const handleAddColor = () => {
+    const trimmed = newColor.trim();
+    if (trimmed && !form.colors.includes(trimmed)) {
+      setForm(f => ({ ...f, colors: [...f.colors, trimmed] }));
+      setNewColor('');
+      setShowColorModal(false);
+    }
   };
 
   const onSave = async (e) => {
@@ -158,11 +163,27 @@ export default function AddProductForm({ existing, onDone, onCancel }) {
         </div>
       )}
 
+      {/* Color Modal */}
+      {showColorModal && (
+        <div className="modal-overlay">
+          <div className="modal-box">
+            <h4>Add Color</h4>
+            <input
+              value={newColor}
+              onChange={(e) => setNewColor(e.target.value)}
+              placeholder="Enter color name"
+            />
+            <button onClick={handleAddColor}>Add</button>
+            <button onClick={() => setShowColorModal(false)}>Cancel</button>
+          </div>
+        </div>
+      )}
+
       <form onSubmit={onSave} className="product-form-container">
         <button type="button" className="form-close-btn" onClick={onCancel}>×</button>
         <h2 className="form-heading">{existing ? 'Edit Product' : 'Add Product'}</h2>
 
-        <div className="form-sections">
+         <div className="form-sections">
           <div className="form-left">
             <div className="card-section">
               <label>Title</label>
@@ -279,13 +300,27 @@ export default function AddProductForm({ existing, onDone, onCancel }) {
 
         <div className="card-section">
           <h3>Variants</h3>
-          <p>Coming soon: size, color, etc.</p>
+          <label>Color Variants</label>
+          <select>
+            {form.colors.map((color, index) => (
+              <option key={index} value={color}>{color}</option>
+            ))}
+          </select>
+          <button type="button" onClick={() => setShowColorModal(true)}>+ Add Color</button>
         </div>
 
         <div className="card-section">
           <h3>Search Engine Listing</h3>
-          <input name="seoTitle" value={form.seoTitle} onChange={handleChange} placeholder="SEO Title" />
-          <TiptapEditor content={form.seoDescription} onChange={html => setForm(f => ({ ...f, seoDescription: html }))} />
+          <input
+            name="seoTitle"
+            value={form.seoTitle}
+            onChange={handleChange}
+            placeholder="SEO Title"
+          />
+          <TiptapEditor
+            content={form.seoDescription}
+            onChange={html => setForm(f => ({ ...f, seoDescription: html }))}
+          />
         </div>
 
         <button type="submit" className="submit-btn" disabled={loading}>

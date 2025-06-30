@@ -13,20 +13,22 @@ import 'swiper/css/thumbs';
 import { motion } from 'framer-motion';
 import './ProductDetailPage.css';
 
-import SizeChart from '../components/SizeChart.js';
-import DeliveryInfo from '../components/DeliveryInfo.js';
-import Reviews from '../components/Reviews.js';
-import ModelInfo from '../components/ModelInfo.js';
-import RelatedProducts from '../components/RelatedProducts.js';
-import WishlistShare from '../components/WishlistShare.js';
-import TrustBadges from '../components/TrustBadges.js';
-import StockStatus from '../components/StockStatus.js';
-import FabricInfo from '../components/FabricInfo.js';
-import ProductTags from '../components/ProductTags.js';
-import WhyChooseUs from '../components/WhyChooseUs.js';
-import OffersDiscounts from '../components/OffersDiscounts.js';
-import FAQsSection from '../components/FAQsSection.js';
-import DeliveryCheck from '../components/DeliveryCheck.js';
+import { useCart } from './context/CartContext'; // ✅ Cart context
+
+import SizeChart from '../components/SizeChart';
+import DeliveryInfo from '../components/DeliveryInfo';
+import Reviews from '../components/Reviews';
+import ModelInfo from '../components/ModelInfo';
+import RelatedProducts from '../components/RelatedProducts';
+import WishlistShare from '../components/WishlistShare';
+import TrustBadges from '../components/TrustBadges';
+import StockStatus from '../components/StockStatus';
+import FabricInfo from '../components/FabricInfo';
+import ProductTags from '../components/ProductTags';
+import WhyChooseUs from '../components/WhyChooseUs';
+import OffersDiscounts from '../components/OffersDiscounts';
+import FAQsSection from '../components/FAQsSection';
+import DeliveryCheck from '../components/DeliveryCheck';
 
 const fallbackImage = 'https://via.placeholder.com/500x500?text=No+Image';
 
@@ -36,6 +38,9 @@ const ProductDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [bgColor, setBgColor] = useState('#000000');
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+
+  const { addToCart } = useCart(); // ✅ Get addToCart from context
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -61,26 +66,40 @@ const ProductDetailPage = () => {
   if (loading) return <div className="loader">Loading...</div>;
   if (!product) return <div className="error">Product not found</div>;
 
-  const images =
-    (product.images && product.images.length > 0
-      ? product.images
-      : [product.image || fallbackImage]
-    ).map((img) =>
-      img?.startsWith('http') ? img : fallbackImage
-    );
+  // ✅ Repeat image if not multiple provided
+  const images = (product.images?.length > 0 ? product.images : [product.image || fallbackImage])
+    .map(img => (img?.startsWith('http') ? img : fallbackImage));
+
+  while (images.length < 3) images.push(images[0]);
+
+  const handleAddToCart = () => {
+    addToCart({
+      id,
+      name: product.name,
+      image: product.image,
+      price: product.price,
+      quantity: quantity,
+    });
+  };
 
   return (
     <div
       className="product-detail-page"
-      style={{ background: `linear-gradient(to bottom, ${bgColor}, #000000)` }}
+      style={{
+        background: `
+          linear-gradient(to top left, ${bgColor} 0%, transparent 40%),
+          linear-gradient(to bottom right, ${bgColor} 0%, transparent 40%),
+          linear-gradient(to top right, black 0%, transparent 40%),
+          linear-gradient(to bottom left, black 0%, transparent 40%)
+        `,
+        backgroundBlendMode: 'screen, screen, multiply, multiply',
+        transition: 'background 0.4s ease-in-out',
+      }}
     >
       <div className="product-detail-container">
-        <motion.div
-          className="thumbnail-column"
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+
+        {/* ✅ Thumbnail slider */}
+        <motion.div className="thumbnail-column" initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
           <Swiper
             onSwiper={setThumbsSwiper}
             direction="vertical"
@@ -96,12 +115,8 @@ const ProductDetailPage = () => {
           </Swiper>
         </motion.div>
 
-        <motion.div
-          className="main-image-column"
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        {/* ✅ Main image slider */}
+        <motion.div className="main-image-column" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
           <Swiper
             modules={[Navigation, Pagination, Thumbs]}
             navigation
@@ -118,12 +133,8 @@ const ProductDetailPage = () => {
           </Swiper>
         </motion.div>
 
-        <motion.div
-          className="product-info"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        {/* ✅ Product info */}
+        <motion.div className="product-info" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
           <p className="visit-store">Visit the <strong>VELNOR</strong> Store</p>
           <h1 className="product-title">{product.name}</h1>
           <div className="rating">★ 3.5 out of 5 stars — 2,155 ratings</div>
@@ -164,13 +175,13 @@ const ProductDetailPage = () => {
           </div>
 
           <div className="quantity-control">
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+            <button onClick={() => setQuantity(prev => Math.max(1, prev - 1))}>-</button>
+            <span>{quantity}</span>
+            <button onClick={() => setQuantity(prev => prev + 1)}>+</button>
           </div>
 
           <div className="action-buttons">
-            <button className="add-to-cart">Add to Cart</button>
+            <button className="add-to-cart" onClick={handleAddToCart}>Add to Cart</button>
             <button className="buy-now">Buy Now</button>
           </div>
 
@@ -178,6 +189,7 @@ const ProductDetailPage = () => {
         </motion.div>
       </div>
 
+      {/* ✅ Additional Sections */}
       <div className="product-extra-info">
         <Suspense fallback={<div>Loading sections…</div>}>
           <DeliveryInfo />

@@ -1,3 +1,4 @@
+/* Main Drawer Container */
 .cart-drawer {
   position: fixed;
   top: 0;
@@ -8,13 +9,15 @@
   z-index: 1000;
 }
 
+/* Dimmed Background */
 .cart-drawer-overlay {
   flex: 1;
   background: rgba(0, 0, 0, 0.4);
 }
 
+/* Drawer Panel */
 .cart-drawer-content {
-  width: 350px;
+  width: 702px;
   background: #1a1a1a;
   color: white;
   padding: 24px;
@@ -22,6 +25,7 @@
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.6);
 }
 
+/* Slide-in Animation */
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -31,33 +35,45 @@
   }
 }
 
+/* Cart Item Layout */
 .cart-item {
   display: flex;
   gap: 16px;
   margin: 20px 0;
 }
 
+/* Product Image */
 .cart-item img {
-  width: 80px;
+  width: 244px;
   border-radius: 10px;
 }
 
+/* Cart Info */
 .cart-details {
   flex: 1;
 }
 
-.checkout-btn {
-  width: 100%;
-  padding: 12px;
-  background: #ff4747;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
+/* Buttons Container */
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   margin-top: 20px;
 }
 
+/* Proceed + Close Button Shared Style */
+.checkout-btn {
+  flex: 1;
+  padding: 12px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
 .checkout-btn:hover {
-  background: #e60000;
+  background-color: #b91c1c;
 }

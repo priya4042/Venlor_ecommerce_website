@@ -1,0 +1,99 @@
+/* src/components/OrderSuccess.css */
+
+.order-success-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.success-card {
+  background: #1f1f1f;
+  border: 1px solid red;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+.success-title {
+  color: red;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px red;
+}
+
+.success-msg {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.success-summary {
+  background: #121212;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.success-summary h4 {
+  margin-bottom: 1rem;
+  color: #ff4d4d;
+}
+
+.success-summary ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.success-summary li {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.success-summary li span {
+  font-weight: 600;
+  color: #ff4d4d;
+  min-width: 140px;
+}
+
+.delivery-note {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #a3ffa3;
+}
+
+.thank-you {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #e5e5e5;
+  font-style: italic;
+}
+
+.invalid-access {
+  color: red;
+  font-size: 1.2rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

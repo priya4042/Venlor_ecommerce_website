@@ -1,4 +1,5 @@
-// src/components/AddProducts.js
+// src/components/AddProducts.jsx
+
 import React, { useState, useEffect } from 'react';
 import './AddProducts.css';
 import { db } from '../firebaseConfig';
@@ -46,7 +47,7 @@ function AddProducts() {
   const handleDone = () => {
     setShowForm(false);
     setEditingProduct(null);
-    window.location.reload(); // You may replace with smarter state update
+    window.location.reload(); // You can replace with a smarter update later
   };
 
   const handleDelete = async (id) => {
@@ -65,8 +66,9 @@ function AddProducts() {
     }
   };
 
+  // ✅ Search by title instead of name
   const filteredProducts = products.filter(product =>
-    product.name?.toLowerCase().includes(searchTerm.toLowerCase())
+    product.title?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -96,8 +98,8 @@ function AddProducts() {
           <thead className="table-dark">
             <tr>
               <th>Image</th>
-              <th>Name</th>
-              <th>Color</th>
+              <th>Title</th>
+              <th>Category</th>
               <th>Price</th>
               <th>Description</th>
               <th style={{ width: '180px' }}>Actions</th>
@@ -106,11 +108,22 @@ function AddProducts() {
           <tbody>
             {filteredProducts.map((prod, idx) => (
               <tr key={idx}>
-                <td><img src={prod.image} alt="product" width="60" className="product-image" /></td>
-                <td>{prod.name}</td>
-                <td>{prod.color}</td>
-                <td>₹ {prod.price}</td>
-                <td>{prod.description}</td>
+                <td>
+                  <img
+                    src={prod.media?.[0] || 'https://via.placeholder.com/60'}
+                    alt="product"
+                    width="60"
+                    className="product-image"
+                  />
+                </td>
+                <td>{prod.title}</td>
+                <td>{prod.category || 'N/A'}</td>
+                <td>₹ {prod.price || 0}</td>
+                <td>
+                  {prod.seoDescription
+                    ? prod.seoDescription.replace(/<[^>]+>/g, '').slice(0, 50) + '...'
+                    : 'No description'}
+                </td>
                 <td>
                   <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(prod)}>Edit</button>
                   <button className="btn btn-danger btn-sm" onClick={() => handleDelete(prod.id)}>Delete</button>
@@ -118,7 +131,9 @@ function AddProducts() {
               </tr>
             ))}
             {filteredProducts.length === 0 && !loading && (
-              <tr><td colSpan="6" className="text-center text-muted">No products found</td></tr>
+              <tr>
+                <td colSpan="6" className="text-center text-muted">No products found</td>
+              </tr>
             )}
           </tbody>
         </table>
