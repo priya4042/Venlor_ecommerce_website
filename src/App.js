@@ -44,7 +44,8 @@ const AppContent = () => {
 
   return (
     <CartProvider>
-      <BrowserRouter>
+      {/* ✅ Set basename to match GitHub repo name */}
+      <BrowserRouter basename="/Venlor_ecommerce_website">
         <TopNavbar />
         <div className="containers">
           <Routes>
