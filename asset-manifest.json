@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Venlor_ecommerce_website/static/css/main.b40b51af.css",
-    "main.js": "/Venlor_ecommerce_website/static/js/main.d5526467.js",
+    "main.js": "/Venlor_ecommerce_website/static/js/main.3466c20a.js",
     "static/js/453.60372152.chunk.js": "/Venlor_ecommerce_website/static/js/453.60372152.chunk.js",
     "static/media/BannerImage.jpg": "/Venlor_ecommerce_website/static/media/BannerImage.8938c729698751e599a8.jpg",
     "index.html": "/Venlor_ecommerce_website/index.html",
     "main.b40b51af.css.map": "/Venlor_ecommerce_website/static/css/main.b40b51af.css.map",
-    "main.d5526467.js.map": "/Venlor_ecommerce_website/static/js/main.d5526467.js.map",
+    "main.3466c20a.js.map": "/Venlor_ecommerce_website/static/js/main.3466c20a.js.map",
     "453.60372152.chunk.js.map": "/Venlor_ecommerce_website/static/js/453.60372152.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b40b51af.css",
-    "static/js/main.d5526467.js"
+    "static/js/main.3466c20a.js"
   ]
 }
