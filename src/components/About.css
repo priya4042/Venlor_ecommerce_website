@@ -1,0 +1,353 @@
+
+/* src/components/About.css */
+.about-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Dark background */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    color: #fff; /* White text for contrast */
+  }
+  
+  .about-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  .about-text {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .about-title {
+    font-size: 3rem;
+    color: #e60000; /* Red color */
+    font-weight: bold;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: slideIn 1s ease-out forwards;
+  }
+  
+  .about-description {
+    font-size: 1.2rem;
+    color: #ddd; /* Lighter gray for description */
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInText 2s ease-in-out forwards;
+  }
+  
+  .about-image {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: scale(0);
+    animation: scaleIn 1s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInText {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Hover Effects */
+  .about-title:hover {
+    color: #ff0000; /* Brighter red */
+    cursor: pointer;
+    transform: translateY(-5px);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .about-image img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .about-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .about-image {
+      margin-top: 20px;
+    }
+  
+    .about-title {
+      font-size: 2.5rem;
+    }
+  
+    .about-description {
+      font-size: 1.1rem;
+    }
+  }
+  
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+/* Main Page */
+.about-page {
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Animated Background Layer */
+.about-page::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, #ff0000 0%, #000000 50%, #ff0000 100%);
+  animation: rotateBackgroundOnly 8s linear infinite;
+  z-index: -1;
+}
+
+/* T-shirt icon fixed in center */
+.tshirt-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 60px;
+  color: #000000; /* subtle red, you can use rgba for softer feel */
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  opacity: 0.2; /* light but visible */
+  filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.3));
+  transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+}
+
+.tshirt-icon:hover {
+  opacity: 0.4;
+  transform: translate(-50%, -50%) scale(1.05);
+  filter: drop-shadow(0 0 6px rgba(255, 0, 0, 0.5));
+}
+
+
+/* Background Rotation */
+@keyframes rotateBackgroundOnly {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Layout */
+.about-container {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Text Area */
+.about-text {
+  flex: 1;
+  padding: 20px;
+  animation: slideIn 1.2s ease-out forwards;
+}
+
+/* Main Heading */
+.about-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+    color: #ffcc00;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid #ffcc00;
+  padding-left: 18px;
+  /* text-shadow: 0 0 20px rgba(255, 0, 0, 0.4); */
+  /* animation: glowPulseRed 1.5s ease-in-out infinite; */
+}
+
+/* Section Headings */
+.about-text h2 {
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-top: 2.2rem;
+  margin-bottom: 1.2rem;
+  border-left: 5px solid #ffcc00;
+  padding-left: 14px;
+  /* text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+  animation: glowPulseYellow 2s ease-in-out infinite; */
+}
+
+/* Paragraphs */
+.about-text p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: #fff5f5;
+  margin-bottom: 1.2rem;
+  animation: fadeInText 2s ease-in-out forwards;
+}
+
+/* Lists */
+.about-text ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-text li {
+  font-size: 1.1rem;
+  color: #ffe6e6;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+/* Image Side */
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  transform: scale(0);
+  animation: scaleIn 1.2s ease-out forwards;
+}
+
+/* Section Divider */
+.section-divider {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #ff4d4d, transparent);
+  margin: 2.5rem 0;
+  animation: fadeInText 1.5s ease-in-out forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInText {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glowPulseRed {
+  0%, 100% { text-shadow: 0 0 10px #ff1a1a, 0 0 20px #ff1a1a; }
+  50% { text-shadow: 0 0 20px #ff4d4d, 0 0 30px #ff4d4d; }
+}
+
+@keyframes glowPulseYellow {
+  0%, 100% { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00; }
+  50% { text-shadow: 0 0 20px #ffff66, 0 0 30px #ffff66; }
+}
+
+/* Hover Effects */
+.about-title:hover,
+.about-text h2:hover {
+  transform: translateY(-3px);
+  transition: transform 0.3s ease;
+  color: #ff7373;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 2.4rem;
+  }
+
+  .about-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .about-image {
+    margin-top: 30px;
+  }
+}

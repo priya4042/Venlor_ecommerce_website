@@ -1,0 +1,22 @@
+/* src/components/StockStatus.css */
+
+.stock-status {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.low-stock {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.trending {
+  background-color: #ffa500;
+  color: black;
+}

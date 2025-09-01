@@ -1,0 +1,33 @@
+/* src/components/ProductTags.css */
+
+.product-tags {
+  margin-top: 25px;
+}
+
+.product-tags h4 {
+  color: #ffce00;
+  margin-bottom: 10px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  background-color: #333;
+  border: 1px solid #777;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: default;
+  transition: all 0.2s;
+}
+
+.tag:hover {
+  background-color: #ffce00;
+  color: #000;
+  border-color: #ffce00;
+}

@@ -1,0 +1,41 @@
+/* src/components/SizeChart.css */
+
+.size-chart-container {
+  margin-top: 15px;
+}
+
+.toggle-chart {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.toggle-chart:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.size-chart-table table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.size-chart-table th,
+.size-chart-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #777;
+}
+
+.size-chart-table th {
+  background-color: #222;
+  font-weight: bold;
+}

@@ -1,0 +1,236 @@
+/* === NAVBAR BASE === */
+.custom-navbar {
+  background-color: rgb(254 0 0);
+  padding: 1rem 3rem;
+  border-bottom: 2px solid white;
+  z-index: 1000;
+}
+
+/* === LOGO IMAGE STYLE === */
+.nav-logo-img {
+  height: 75px;
+  object-fit: contain;
+}
+
+/* === NAV LINKS === */
+.navbar-nav .nav-link {
+  color: white !important;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-left: 1rem;
+  transition: all 0.3s ease-in-out;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f0f0f0 !important;
+  text-shadow: 0 0 8px white;
+  transform: translateY(-2px);
+}
+
+/* Active nav link (bold + shadow + underline) */
+.navbar-nav .nav-link.active {
+  font-weight: 700;
+  color: #fff !important;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.navbar-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+
+/* === BUTTON LINKS (SIGN IN/OUT) === */
+.btn-link {
+  color: white !important;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+  color: #f0f0f0 !important;
+  text-shadow: 0 0 10px white;
+  transform: scale(1.05);
+}
+
+/* === RESPONSIVE NAVBAR COLLAPSE === */
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+    background-color: rgb(208, 25, 27);
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .navbar-nav .nav-link {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar-toggler-icon {
+    background-color: white; /* White color for the hamburger icon */
+  }
+
+  .navbar-collapse {
+    background-color: rgb(208, 25, 27); /* Keep same red background on collapse */
+    padding: 1rem 0;
+    border-radius: 10px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1.2rem;
+  }
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+/* === ANIMATIONS (using Animate.css) === */
+.animate__animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animate__fadeInDown {
+  animation-name: fadeInDown;
+}
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #dc2626;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* === PROMO RIBBON === */
+.promo-ribbon {
+  background-color: #a60000;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ribbon-text {
+  display: inline-block;
+  padding: 0.4rem 0;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  animation: marquee 25s linear infinite; /* slower */
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* === SEARCH CONTAINER === */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* === SEARCH ICON === */
+.search-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-icon-shape {
+  font-size: 1.4rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+/* === SEARCH FORM (input hidden initially) === */
+.search-form {
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin-right: -16px;  /* space between input and icon */
+}
+
+/* expand input when active */
+.search-container.active .search-form {
+  max-width: 180px;
+  opacity: 1;
+}
+
+/* icon moves slightly right when input is active */
+.search-container.active .search-icon-shape {
+  transform: translateX(3px);
+}
+
+/* === INPUT STYLING === */
+.search-form input {
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  padding: 0.35rem 0.7rem;   /* more breathing space inside */
+  border-radius: 6px;
+  font-size: 0.9rem;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.search-form input::placeholder {
+  color: #f0f0f0;
+  opacity: 0.8;
+}
+
+.search-form input:focus {
+  outline: none;
+  background: white;
+  color: black;
+}
+
+
+
+/* === HEART (LIKED PRODUCTS) === */
+.heart-icon {
+  position: relative;
+}
+
+.heart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #e11d48;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  line-height: 1;
+}
