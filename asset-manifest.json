@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Venlor_ecommerce_website/static/css/main.be0999e0.css",
+    "main.js": "/Venlor_ecommerce_website/static/js/main.914bd8da.js",
+    "static/js/206.881e50b8.chunk.js": "/Venlor_ecommerce_website/static/js/206.881e50b8.chunk.js",
+    "static/media/BannerImage.jpg": "/Venlor_ecommerce_website/static/media/BannerImage.8938c729698751e599a8.jpg",
+    "index.html": "/Venlor_ecommerce_website/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.be0999e0.css",
+    "static/js/main.914bd8da.js"
+  ]
+}
